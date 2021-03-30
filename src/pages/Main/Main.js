@@ -11,7 +11,7 @@ const Main = ({takeName, nameOfTheGame}) => {
             {nameOfTheGame}
           </section>
         
-        <p>Start the project</p>
+        <p>Start  project</p>
         </main>
     )
 }
