@@ -10,15 +10,7 @@ function App() {
     const url = 'http://steamspy.com/api.php?request=top100in2weeks';
     const res = await fetch(url);
     const data = await res.json();
-<<<<<<< HEAD
-    const array = []
-    for (let game in data) {
-      array.push(game);
-    }
-    setState(array.map(game => state.push(game.name)));
-    console.log(state);
-=======
-    const array = Object.entries(data).map((item) => ({...item[1]})).sort((first, second) => second.ccu - first.ccu)
+    const array = Object.entries(data).map((item) => ({ ...item[1] })).sort((first, second) => second.ccu - first.ccu)
     console.log(array)
     // const array = []
     // for (let game in data){
@@ -26,7 +18,6 @@ function App() {
     // }
     setState("lol");
     // console.log(data);
->>>>>>> eb2d4a99180f91cab8e48cd6d514ffdc2a531af8
   }
 
   return (
