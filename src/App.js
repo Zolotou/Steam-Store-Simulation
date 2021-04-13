@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
+import { Provider } from 'react-redux';
+import configureStore from './redux/configureStore';
+
 
 function App() {
   const [state, setState] = useState("Name of the game");
@@ -19,13 +22,18 @@ function App() {
     setState("lol");
     // console.log(data);
   }
+  
+  const store = configureStore();
 
   return (
-    <div className="App">
-      <Header />
-      <Main takeName={takeName} nameOfTheGame={state} />
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Header />
+        <Main takeName={takeName} nameOfTheGame={state} />
+        <Footer />
+      </div>
+    </Provider>
+
   );
 }
 

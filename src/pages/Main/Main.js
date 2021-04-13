@@ -1,4 +1,5 @@
 import Wallet from "../../components/Main/Wallet/Wallet";
+import GameField from "../../components/Main/GameField/GameField";
 
 const Main = ({ takeName, nameOfTheGame }) => {
   return (
@@ -7,7 +8,8 @@ const Main = ({ takeName, nameOfTheGame }) => {
       <section>
         <p>Active Sise</p>
         <button onClick={takeName}>Show</button>
-      </section>
+      </section>]
+      <GameField />
       <section>
         <p>Game section</p>
         {nameOfTheGame}
