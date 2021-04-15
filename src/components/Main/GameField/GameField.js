@@ -2,9 +2,9 @@ import React from 'react'
 
 function GameField({list}) {
     return (
-        <div>
-            {list.map(game => <h1>{game.name}</h1>)}
-            <h1>This is a GameField Section</h1>
+        <div className="gameField">
+            {list.map(game => <div className="gamebox" key={game.appid}>{game.name}</div>)}
+            
         </div>
     )
 }

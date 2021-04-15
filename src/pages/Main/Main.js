@@ -23,13 +23,9 @@ const Main = ({incrementActions,getGameAction, userReducer}) => {
       <section>
         <p>Active Sise</p>
         <button>Show</button>
-      </section>]
-      <GameField list={userReducer.gameList} />
-      <section>
-        <p>Game section</p>
       </section>
-
-      <p>Start the project</p>
+      <GameField list={userReducer.gameList} />
+      
     </main>
   )
 }

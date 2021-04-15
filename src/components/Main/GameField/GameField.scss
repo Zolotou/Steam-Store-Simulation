@@ -1,0 +1,12 @@
+.gameField{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .gamebox{
+    width: 80px;
+    height: 80px;
+  }
+}
+
