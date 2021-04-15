@@ -1,18 +1,32 @@
 import Wallet from "../../components/Main/Wallet/Wallet";
 import GameField from "../../components/Main/GameField/GameField";
+import {connect} from "react-redux"
+import {userActions} from '../../redux/actions'
+import {useEffect} from 'react';
 
-const Main = ({ takeName, nameOfTheGame }) => {
+const Main = ({incrementActions,getGameAction, userReducer}) => {
+
+  
+  const fetchUserData = async () => {
+    getGameAction()
+  }
+
+  useEffect(() => {
+    fetchUserData()
+  }, [])
+  
+
+
   return (
     <main className="main">
-      <Wallet />
+      <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
       <section>
         <p>Active Sise</p>
-        <button onClick={takeName}>Show</button>
+        <button>Show</button>
       </section>]
-      <GameField />
+      <GameField list={userReducer.gameList} />
       <section>
         <p>Game section</p>
-        {nameOfTheGame}
       </section>
 
       <p>Start the project</p>
@@ -20,4 +34,15 @@ const Main = ({ takeName, nameOfTheGame }) => {
   )
 }
 
-export default Main;
+
+const mapStateToProps = state => {
+  return state
+}
+
+const mapDispatchToProps = {
+    incrementActions: userActions.increment,
+    getGameAction: userActions.getGame
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

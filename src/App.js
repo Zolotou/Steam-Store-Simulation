@@ -8,20 +8,20 @@ import configureStore from './redux/configureStore';
 
 
 function App() {
-  const [state, setState] = useState("Name of the game");
-  const takeName = async () => {
-    const url = 'http://steamspy.com/api.php?request=top100in2weeks';
-    const res = await fetch(url);
-    const data = await res.json();
-    const array = Object.entries(data).map((item) => ({ ...item[1] })).sort((first, second) => second.ccu - first.ccu)
-    console.log(array)
-    // const array = []
-    // for (let game in data){
-    //   array.push(game);
-    // }
-    setState("lol");
-    // console.log(data);
-  }
+  // const [state, setState] = useState("Name of the game");
+  // const takeName = async () => {
+  //   const url = 'http://steamspy.com/api.php?request=top100in2weeks';
+  //   const res = await fetch(url);
+  //   const data = await res.json();
+  //   const array = Object.entries(data).map((item) => ({ ...item[1] })).sort((first, second) => second.ccu - first.ccu)
+  //   console.log(array)
+  //   // const array = []
+  //   // for (let game in data){
+  //   //   array.push(game);
+  //   // }
+  //   setState("lol");
+  //   // console.log(data);
+  // }
   
   const store = configureStore();
 
@@ -29,7 +29,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Header />
-        <Main takeName={takeName} nameOfTheGame={state} />
+        <Main name={'asdfsdf'} />
         <Footer />
       </div>
     </Provider>
