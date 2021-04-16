@@ -22,3 +22,9 @@ export const getGame = (dispatch) => {
     }
   };
 }
+
+
+export const buyGame = (payload) => ({
+   payload,
+   type: 'BUYGAME'
+})

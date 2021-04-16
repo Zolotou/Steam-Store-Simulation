@@ -1,9 +1,11 @@
 import React from 'react'
+import './GameField.scss'
+import Gamebox from '../Gamebox/Gamebox'
 
 function GameField({list}) {
     return (
         <div className="gameField">
-            {list.map(game => <div className="gamebox" key={game.appid}>{game.name}</div>)}
+            {list.map((game, index) => <Gamebox key={game.appid} game={game} index={index}  />)}
             
         </div>
     )

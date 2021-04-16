@@ -29,6 +29,15 @@ const userReducer = (state = initialState, action) => {
                     wallet: state.user.wallet - action.payload
                 }
             }
+        case 'BUYGAME':
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    wallet: state.user.wallet - 10,
+                    gameList: [...state.user.gameList, state.gameList[action.payload]]
+                }
+            }
         default:
             return state
     }

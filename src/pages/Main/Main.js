@@ -3,6 +3,7 @@ import GameField from "../../components/Main/GameField/GameField";
 import {connect} from "react-redux"
 import {userActions} from '../../redux/actions'
 import {useEffect} from 'react';
+import "./Main.scss"
 
 const Main = ({incrementActions,getGameAction, userReducer}) => {
 
@@ -19,9 +20,9 @@ const Main = ({incrementActions,getGameAction, userReducer}) => {
 
   return (
     <main className="main">
-      <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
       <section>
-        <p>Active Sise</p>
+        <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
+        <p>Buyed games: {userReducer.user.gameList.length}</p>
         <button>Show</button>
       </section>
       <GameField list={userReducer.gameList} />
