@@ -1,10 +1,12 @@
 import './App.scss';
-import React, { useState, useEffect } from 'react';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import { Provider } from 'react-redux';
 import configureStore from './redux/configureStore';
+import { Route, Switch } from 'react-router';
+import Score from './components/Score/Score';
+import About from './components/About/About';
 
 
 function App() {
@@ -22,15 +24,23 @@ function App() {
   //   setState("lol");
   //   // console.log(data);
   // }
-  
+
   const store = configureStore();
 
   return (
     <Provider store={store}>
       <div className="App">
-        <Header />
-        <Main name={'asdfsdf'} />
-        <Footer />
+        <div className="wrapper">
+          <Header />
+          <main className="main">
+            <Switch>
+              <Route exact path="/" c render={() => <Main name={'asdfsdf'} />}></Route>
+              <Route path="/score" render={() => <Score />}></Route>
+              <Route path="/about" render={() => <About />}></Route>
+            </Switch>
+          </main>
+          <Footer />
+        </div>
       </div>
     </Provider>
 
