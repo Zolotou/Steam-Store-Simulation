@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Wallet.scss";
+import gif from '../../../assets/icons8-us-dollar-circled.gif'
 
 const Wallet = ({cash, onMoney}) => {
 
@@ -7,10 +8,7 @@ const Wallet = ({cash, onMoney}) => {
 
     return (
         <div>
-            <img className="dollar" onClick={() => onMoney(1)} src="https://odollarah.ru//wp-content/uploads/2014/05/gold-dollar-sign.jpg" alt="dollar" />
-
-            <p>Wallet: {cash} $</p>
-
+            <img className="dollar" onClick={() => onMoney(1)} src={gif} alt="dollar" />
         </div>
     )
 }

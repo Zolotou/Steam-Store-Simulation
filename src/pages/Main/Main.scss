@@ -1,5 +1,18 @@
 .main{
   display: flex;
   justify-content: space-between;
-  background-color: #c6d4df;
+  background-color: #1b2838;
 }
+
+
+.leftSide{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .gameActions {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
