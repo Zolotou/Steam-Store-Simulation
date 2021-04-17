@@ -3,7 +3,7 @@ export const increment = (payload) => ({
   type: 'INCREMENT'
 })
 
-export const getGame = (dispatch) => {
+export const getGame = () => {
   return async (dispatch) => {
     try {
       
