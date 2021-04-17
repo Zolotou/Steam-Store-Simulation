@@ -17,7 +17,7 @@ function Gamebox({game, userReducer, index, buyGameAction}) {
   
   return (
     <div className={userReducer.user.wallet > 10 ? "gamebox" : "gamebox-disable"} onClick={() => buyGame()}>
-      <img src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} alt="picutre" />
+      <img src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} alt="picture" />
       <p>{game.name}</p>
     </div>
   )
@@ -31,8 +31,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  incrementActions: userActions.increment,
-  getGameAction: userActions.getGame,
   buyGameAction: userActions.buyGame
 }
 

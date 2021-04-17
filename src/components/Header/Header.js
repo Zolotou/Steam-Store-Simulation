@@ -1,6 +1,8 @@
 const Header = () => {
     return (
-        <header>Header</header>
+        <header>
+            <img src="../../assets/icons8-steam-circled-48.png"></img>
+        </header>
     )
 }
 
