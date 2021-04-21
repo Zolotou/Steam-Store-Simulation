@@ -37,7 +37,6 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
         <button>Show</button>
       </section>
       <GameField list={userReducer.gameList} />
-
     </main>
   )
 }
