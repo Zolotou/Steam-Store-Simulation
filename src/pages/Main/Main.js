@@ -6,11 +6,15 @@ import Quiz from "../../components/Main/Quiz/Quiz"
 import {connect} from "react-redux"
 import {userActions} from '../../redux/actions'
 import {useEffect} from 'react';
+import { connect } from "react-redux"
+import { userActions } from '../../redux/actions'
+import { useEffect } from 'react';
 import "./Main.scss"
+import Levels from "../../components/Levels/Levels";
 
-const Main = ({incrementActions,getGameAction, userReducer}) => {
+const Main = ({ incrementActions, getGameAction, userReducer }) => {
 
-  
+
   const fetchUserData = async () => {
     getGameAction()
   }
@@ -18,7 +22,7 @@ const Main = ({incrementActions,getGameAction, userReducer}) => {
   useEffect(() => {
     fetchUserData()
   }, [])
-  
+
 
 
   return (
@@ -30,9 +34,13 @@ const Main = ({incrementActions,getGameAction, userReducer}) => {
           <Quiz />
         </div>
         <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
+        <Levels />
+        <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
+        <p>Buyed games: {userReducer.user.gameList.length}</p>
+        <button>Show</button>
       </section>
       <GameField list={userReducer.gameList} />
-      
+
     </main>
   )
 }
@@ -43,8 +51,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    incrementActions: userActions.increment,
-    getGameAction: userActions.getGame
+  incrementActions: userActions.increment,
+  getGameAction: userActions.getGame
 }
 
 
