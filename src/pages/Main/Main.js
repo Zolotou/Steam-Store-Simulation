@@ -5,6 +5,7 @@ import { userActions } from '../../redux/actions'
 import { useEffect } from 'react';
 import "./Main.scss"
 import Levels from "../../components/Levels/Levels";
+import SteamQuiz from "../../components/SteamQuiz/SteamQuiz";
 
 const Main = ({ incrementActions, getGameAction, userReducer }) => {
 
@@ -23,6 +24,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
     <main className="main">
       <section>
         <Levels />
+        <SteamQuiz />
         <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
         <p>Buyed games: {userReducer.user.gameList.length}</p>
         <button>Show</button>
