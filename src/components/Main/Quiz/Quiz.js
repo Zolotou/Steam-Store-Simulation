@@ -6,57 +6,59 @@ import {connect} from "react-redux"
 import {userActions} from '../../../redux/actions'
 
 function Quiz({cash, userReducer, incrementActions}) {
+  console.log("QUiz")
   const [show, setShow] = useState(false);
   const [leftImage, setLeftImage] = useState(1);
   const [rightImage, setRightImage] = useState(1);
   const [quizType, setQuizType] = useState({
-    answerFunction: console.log(),
-    answerRight: 10,
-    question:"123"
+    answerFunction: null,
+    answerRight: null,
+    question: null
   });
 
-  const handleQuizApi = async () => {
+  const handleQuizApi = () => {
     if(cash > 15) {
-      let typeofQuestion = Math.floor(Math.random() * 3)
-      setLeftImage(Math.floor(Math.random() * 90));
-      setRightImage(Math.floor(Math.random() * 90))
-      console.log(leftImage)
-      console.log(rightImage)
-      handleTypeQuiz(typeofQuestion)
-      setShow(true)
       
+        let typeofQuestion = Math.floor(Math.random() * 3)
+        const LeftImageNumber = Math.floor(Math.random() * 90);
+        const RightImageNumber = Math.floor(Math.random() * 90);
+        
+        let answer = Math.floor(Math.random() * 2) ? LeftImageNumber : RightImageNumber;
+        const questObject = handleTypeQuiz(typeofQuestion, answer)
+        setLeftImage(LeftImageNumber);
+        setRightImage(RightImageNumber);
+        setQuizType(questObject)
+        console.log(questObject, "quizType after handleType")
+        setShow(true)
     }
   }
 
-  const handleTypeQuiz = (type) => {
-    let answer = Math.floor(Math.random() * 2) ? leftImage : rightImage;
+  const handleTypeQuiz = (type, answer) => {
+    console.log(type, "type in handleType")
+    
     switch(type){
       case 0:
-        setQuizType({
-          answerFunction: answerActivePlayers,
-          answerRight: answer,
-          question: "Which of this game has more active players?"
-        })
-        break;
+          return {
+            answerFunction: answerActivePlayers,
+            answerRight: answer,
+            question: "Which of this game has more active players?"
+          }
       case 1:
-        setQuizType({
-          answerFunction: answerPublisher,
-          answerRight: answer,
-          question: `Which of this game has developer as ${userReducer.gameList[answer]?.developer} and publisher ${userReducer.gameList[answer]?.publisher} `
-        })
-        break;
+          return {
+            answerFunction: answerPublisher,
+            answerRight: answer,
+            question: `Which of this game has developer as ${userReducer.gameList[answer]?.developer} and publisher ${userReducer.gameList[answer]?.publisher} `
+          }
       default:
-        setQuizType({
-          answerFunction: answerName,
-          answerRight: answer,
-          question: `Which of this is ${userReducer.gameList[answer]?.name}`
-        })
-        break;
+          return {
+            answerFunction: answerName,
+            answerRight: answer,
+            question: `Which of this is ${userReducer.gameList[answer]?.name}`
+          }
     }
   }
 
   const answerActivePlayers = (imageAnswer, otherAnswer) => {
-    console.log(quizType)
     if (imageAnswer < otherAnswer) {
       incrementActions(20);
       setShow(false)
@@ -64,19 +66,15 @@ function Quiz({cash, userReducer, incrementActions}) {
   }
 
 
-  const answerPublisher = (imageAnswer, otherAnswer) => {
-    console.log(imageAnswer)
-    console.log(quizType)
-    if(imageAnswer == quizType.answerRight){
+  const answerPublisher = (imageAnswer, otherAnswer, answer) => {
+    if(imageAnswer == answer){
       incrementActions(20);
       setShow(false)
     }
   }
 
-  const answerName = (imageAnswer, otherAnswer) => {
-    console.log(imageAnswer)
-    console.log(quizType)
-    if(imageAnswer == quizType){
+  const answerName = (imageAnswer, otherAnswer, answer) => {
+    if(imageAnswer == answer){
       incrementActions(20);
       setShow(false)
     }
@@ -84,10 +82,12 @@ function Quiz({cash, userReducer, incrementActions}) {
 
 
   return (
+    <>
     <div className="quiz-button">
-      <QuizApi  show={show} left={leftImage} right={rightImage}   leftImage={userReducer.gameList[leftImage]?.appid} rightImage={userReducer.gameList[rightImage]?.appid} answerFunction={quizType.answerFunction} question={quizType.question} />
       <img className="dollar" onClick={() => handleQuizApi()} src={gif} alt="dollar" />
     </div>
+    {show?  <QuizApi  left={leftImage} right={rightImage} answer ={quizType.answerRight}   leftImage={userReducer.gameList[leftImage]?.appid} rightImage={userReducer.gameList[rightImage]?.appid} answerFunction={quizType.answerFunction} question={quizType.question} /> : null }
+    </>
   )
 }
 
