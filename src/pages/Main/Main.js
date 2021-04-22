@@ -28,7 +28,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
         <Stats cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
         <div className="gameActions">
           <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
-          <Quiz />
+          <Quiz cash={userReducer.user.wallet} />
         </div>
         <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
         <Levels />
