@@ -1,8 +1,11 @@
 import Wallet from "../../components/Main/Wallet/Wallet";
 import GameField from "../../components/Main/GameField/GameField";
-import { connect } from "react-redux"
-import { userActions } from '../../redux/actions'
-import { useEffect } from 'react';
+import Helper from "../../components/Main/Helper/Helper"
+import Stats from "../../components/Main/Stats/Stats"
+import Quiz from "../../components/Main/Quiz/Quiz"
+import {connect} from "react-redux"
+import {userActions} from '../../redux/actions'
+import {useEffect} from 'react';
 import "./Main.scss"
 import Levels from "../../components/Levels/Levels";
 import SteamQuiz from "../../components/SteamQuiz/SteamQuiz";
@@ -22,7 +25,13 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
 
   return (
     <main className="main">
-      <section>
+      <section className="leftSide">
+        <Stats cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
+        <div className="gameActions">
+          <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
+          <Quiz cash={userReducer.user.wallet} />
+        </div>
+        <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
         <Levels />
         <SteamQuiz />
         <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
@@ -30,7 +39,6 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
         <button>Show</button>
       </section>
       <GameField list={userReducer.gameList} />
-
     </main>
   )
 }

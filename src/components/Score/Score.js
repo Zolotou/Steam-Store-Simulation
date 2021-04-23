@@ -1,10 +1,11 @@
+import React from 'react'
 
-const Score = () => {
-    return (
-        <div>
-            Score
-        </div>
-    )
+function Score() {
+  return (
+    <div>
+      <p>score</p>
+    </div>
+  )
 }
 
-export default Score;
+export default Score
