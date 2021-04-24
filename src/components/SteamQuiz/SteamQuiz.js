@@ -1,5 +1,9 @@
 import { useState } from "react";
 import SteamQuizCard from "./SteamQuizCard";
+import quizIcon from "../../assets/Quiz1.svg";
+import styles from "./SteamQuiz.module.scss";
+import { connect } from "react-redux";
+import { userActions } from "../../redux/actions"
 
 const questions = [
     {
@@ -65,46 +69,43 @@ const questions = [
 
 ];
 
-const addMoney = (money, num) => money + num;
+const SteamQuiz = ({ incrementActions }) => {
 
-const SteamQuiz = () => {
-
-    const [money, setMoney] = useState(0);
     const [num, setNum] = useState(0);
+    const [quiz, setQuiz] = useState(true);
 
 
     const clickHandler = (e) => {
         const answer = e.target.textContent;
         setNum(num + 1);
         if (answer === questions[num].correctAnswer) {
-            const addMoneyToWallet = addMoney(money, 20);
-            setMoney(addMoneyToWallet);
+            incrementActions(20);
 
         }
     }
 
+
     return (
-        <div>Money: {money}
-            {/* {
-                questions.map(q => <SteamQuizCard
-                    key={q.id}
-                    id={q.id}
-                    question={q.question}
-                    answers={q.answers}
-                    correctAnswer={q.correctAnswer}
-                    clickHandler={clickHandler} />)
-            } */}
-            { questions[num] ? <SteamQuizCard
-                key={questions[num].id}
-                id={questions[num].id}
-                question={questions[num].question}
-                answers={questions[num].answers}
-                correctAnswer={questions[num].correctAnswer}
-                clickHandler={clickHandler}
-            />
-                : "No more questions"}
+        <div>
+            {quiz
+                ? <img className={styles.icon} src={quizIcon} alt="quiz_icon" onClick={() => setQuiz(false)} />
+                : <div>{questions[num] ? <SteamQuizCard
+                    key={questions[num].id}
+                    id={questions[num].id}
+                    question={questions[num].question}
+                    answers={questions[num].answers}
+                    correctAnswer={questions[num].correctAnswer}
+                    clickHandler={clickHandler}
+                />
+                    : "No more questions"}</div>
+            }
         </div>
     )
 }
 
-export default SteamQuiz;
+const mapDispatchToProps = {
+    incrementActions: userActions.increment,
+}
+
+
+export default connect(null, mapDispatchToProps)(SteamQuiz)
