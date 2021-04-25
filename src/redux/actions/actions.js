@@ -3,6 +3,11 @@ export const increment = (payload) => ({
   type: 'INCREMENT'
 })
 
+export const decrement = (payload) => ({
+  payload,
+  type: 'DECREMENT'
+})
+
 export const getGame = () => {
   return async (dispatch) => {
     try {

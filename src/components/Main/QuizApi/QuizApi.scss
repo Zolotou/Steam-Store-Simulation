@@ -1,6 +1,6 @@
 .QuizApiWrapper{
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.8);
   left: 0;
   top: 0;
@@ -12,22 +12,32 @@
 
 
 .QuizApi{
-  width: 70vw;
-  height: 50vh;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  color: #000;
+  width: 50%;
+  height: 50%;
   position: relative;
+  padding: 5%;
+  color: #FFFFFF;
   z-index: 10;
-  border-radius: 10px;
 }
 
 .QuizApiImages{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
-  img{
-    width: 200px;
+  .Quiz-Img{
+    transition: all 1s;
   }
+
+  .Quiz-Img:hover{
+    transform: scale(1.1);
+    border: 1px solid white;
+  }
+  
+}
+
+.QuizText{
+  padding-top: 5%;
+  font-size: 1.5em;
+
 }

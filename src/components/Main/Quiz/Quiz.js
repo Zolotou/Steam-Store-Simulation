@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
-import gif from "../../../assets/icons8-questions-100.png"
+import gif from "../../../assets/icons8-questions.svg"
 import "./Quiz.scss"
 import QuizApi from '../QuizApi/QuizApi'
 import {connect} from "react-redux"
 import {userActions} from '../../../redux/actions'
+import userReducer from '../../../redux/reducers/userReducer'
+import ReactTooltip from "react-tooltip";
 
-function Quiz({cash, userReducer, incrementActions}) {
-  console.log("QUiz")
+function Quiz({cash, userReducer, incrementActions, decrementActions}) {
   const [show, setShow] = useState(false);
   const [leftImage, setLeftImage] = useState(1);
   const [rightImage, setRightImage] = useState(1);
@@ -28,14 +29,11 @@ function Quiz({cash, userReducer, incrementActions}) {
         setLeftImage(LeftImageNumber);
         setRightImage(RightImageNumber);
         setQuizType(questObject)
-        console.log(questObject, "quizType after handleType")
         setShow(true)
     }
   }
 
   const handleTypeQuiz = (type, answer) => {
-    console.log(type, "type in handleType")
-    
     switch(type){
       case 0:
           return {
@@ -59,33 +57,47 @@ function Quiz({cash, userReducer, incrementActions}) {
   }
 
   const answerActivePlayers = (imageAnswer, otherAnswer) => {
-    if (imageAnswer < otherAnswer) {
+    if (imageAnswer <= otherAnswer) {
       incrementActions(20);
-      setShow(false)
+    }else{
+      decrementActions(20)
     }
+    setShow(false)
   }
 
 
   const answerPublisher = (imageAnswer, otherAnswer, answer) => {
     if(imageAnswer == answer){
       incrementActions(20);
-      setShow(false)
+    }else{
+      decrementActions(15)
     }
+    setShow(false)
   }
 
   const answerName = (imageAnswer, otherAnswer, answer) => {
     if(imageAnswer == answer){
       incrementActions(20);
-      setShow(false)
+      
+    }else{
+      decrementActions(30)
     }
+    setShow(false)
   }
 
 
   return (
     <>
     <div className="quiz-button">
-      <img className="dollar" onClick={() => handleQuizApi()} src={gif} alt="dollar" />
+      <img  data-tip data-for="quiz-button" className={cash > 15? "dollar" : "disable-dollar"} onClick={() => handleQuizApi()} src={gif} alt="dollar" />
     </div>
+    <ReactTooltip id="quiz-button" place="top" type="dark" effect="float">
+      <h4>Quiz game</h4>
+      <p>It has tree types of questions</p>
+      <p>If you answer correctly you recieve cash  - 20$</p>
+      <p>Wrong - from 15 to 30$</p>
+      <p>Price to play: 15$</p>
+    </ReactTooltip>
     {show?  <QuizApi  left={leftImage} right={rightImage} answer ={quizType.answerRight}   leftImage={userReducer.gameList[leftImage]?.appid} rightImage={userReducer.gameList[rightImage]?.appid} answerFunction={quizType.answerFunction} question={quizType.question} /> : null }
     </>
   )
@@ -100,6 +112,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   incrementActions: userActions.increment,
+  decrementActions: userActions.decrement
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz)

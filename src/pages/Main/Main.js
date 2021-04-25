@@ -32,8 +32,9 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
         <div className="gameActions">
           <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
           <Quiz cash={userReducer.user.wallet} />
+          <SteamQuiz />
         </div>
-        <SteamQuiz />
+        
         <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
       </section>
       <GameField list={userReducer.gameList} />

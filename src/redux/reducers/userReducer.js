@@ -34,8 +34,8 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    wallet: state.user.wallet - 10,
-                    gameList: [...state.user.gameList, state.gameList[action.payload]]
+                    wallet: state.user.wallet - action.payload[1],
+                    gameList: [...state.user.gameList, state.gameList[action.payload[0]]]
                 }
             }
         default:

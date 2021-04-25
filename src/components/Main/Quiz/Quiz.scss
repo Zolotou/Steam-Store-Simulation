@@ -1,5 +1,10 @@
-.dollar{
-  background-color: antiquewhite;
+.dollar:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.disable-dollar{
+  opacity: 0.5;
 }
 
 .quiz-button{
