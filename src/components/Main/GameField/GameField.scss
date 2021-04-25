@@ -1,7 +1,7 @@
 .gameField{
   width: 80vw;
-  height: 76vh;
-  overflow-y: scroll;
+  height: 80vh;
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -10,12 +10,21 @@
 
 
   .gamebox{
+    display: grid;
+    place-items: center;
     width: 250px;
     height: 350px;
+    background-color: none;
+    transition: background-color 1s;
 
     img{
       width: 200px;
       height: 300px;
+      transition: transform 1s;
+
+      &:hover{
+        transform: scale(1.1);
+      }
     }
 
     &:hover{
@@ -24,11 +33,14 @@
   }
 
   .gamebox-disable{
+    display: grid;
+    place-items: center;
     opacity: 0.5;
     width: 250px;
     height: 350px;
 
     img{
+
       width: 200px;
       height: 300px;
     }
