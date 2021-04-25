@@ -14,7 +14,7 @@ const questions = [
     },
     {
         id: 2,
-        question: "What year did the Steam launch?",
+        question: "What year was the Steam launched?",
         answers: ["1997", "2000", "2003", "2006"],
         correctAnswer: "2003"
     },
@@ -72,7 +72,7 @@ const questions = [
 const SteamQuiz = ({ incrementActions }) => {
 
     const [num, setNum] = useState(0);
-    const [quiz, setQuiz] = useState(true);
+    const [isQuiz, setIsQuiz] = useState(false);
 
 
     const clickHandler = (e) => {
@@ -87,17 +87,26 @@ const SteamQuiz = ({ incrementActions }) => {
 
     return (
         <div>
-            {quiz
-                ? <img className={styles.icon} src={quizIcon} alt="quiz_icon" onClick={() => setQuiz(false)} />
-                : <div>{questions[num] ? <SteamQuizCard
-                    key={questions[num].id}
-                    id={questions[num].id}
-                    question={questions[num].question}
-                    answers={questions[num].answers}
-                    correctAnswer={questions[num].correctAnswer}
-                    clickHandler={clickHandler}
-                />
-                    : "No more questions"}</div>
+            {isQuiz
+                ? <div className={styles.quiz}>
+                    <div className={styles.QuizWrapper}>
+                        {questions[num]
+                            ? <div className={styles.quiz}> <SteamQuizCard
+                                key={questions[num].id}
+                                id={questions[num].id}
+                                question={questions[num].question}
+                                answers={questions[num].answers}
+                                correctAnswer={questions[num].correctAnswer}
+                                clickHandler={clickHandler}
+                            /> </div>
+                            : <div className={styles.quiz}>
+                                <div><h1>No more questions!</h1>
+                                    <button className={styles.close} onClick={() => setIsQuiz(!isQuiz)}>Close</button>
+                                </div>
+                            </div>
+                        }</div>
+                </div>
+                : <img className={styles.icon} src={quizIcon} alt="quiz_icon" onClick={() => setIsQuiz(!isQuiz)} />
             }
         </div>
     )
