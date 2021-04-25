@@ -33,11 +33,13 @@ function App() {
         <div className="wrapper">
           <Header />
           <main className="main">
-            <Switch>
-              <Route exact path="/" c render={() => <Main name={'asdfsdf'} />}></Route>
-              <Route path="/score" render={() => <Score />}></Route>
-              <Route path="/about" render={() => <About />}></Route>
-            </Switch>
+            <div className="container">
+              <Switch>
+                <Route exact path="/" c render={() => <Main name={'asdfsdf'} />}></Route>
+                <Route path="/score" render={() => <Score />}></Route>
+                <Route path="/about" render={() => <About />}></Route>
+              </Switch>
+            </div>
           </main>
           <Footer />
         </div>

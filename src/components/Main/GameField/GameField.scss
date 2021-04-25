@@ -1,11 +1,12 @@
 .gameField{
   width: 80vw;
-  height: 90vh;
+  height: 76vh;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 
 
   .gamebox{

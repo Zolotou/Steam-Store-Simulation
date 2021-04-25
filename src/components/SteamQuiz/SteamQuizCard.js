@@ -1,11 +1,11 @@
+import styles from "./SteamQuizCard.module.scss";
 
-
-const SteamQuizCard = ({ id, question, answers, correctAnswer, clickHandler }) => {
+const SteamQuizCard = ({ question, answers, clickHandler }) => {
     return (
-        <div>
+        <div className={styles.card}>
             <h1>{question}</h1>
             {
-                answers.map((e, index) => <button key={index} onClick={(e) => clickHandler(e)}>{e}</button>)
+                answers.map((e, index) => <button className={styles.btn} key={index} onClick={(e) => clickHandler(e)}>{e}</button>)
             }
         </div>
     )
