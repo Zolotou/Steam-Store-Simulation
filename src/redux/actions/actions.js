@@ -28,6 +28,11 @@ export const getGame = () => {
   };
 }
 
+export const EndGame = (payload) => ({
+  payload,
+  type: 'ENDGAME'
+})
+
 
 export const buyGame = (payload) => ({
   payload,

@@ -5,7 +5,7 @@ import InventoryGameBox from '../InventoryGameBox/InventoryGameBox'
 
 function Inventory({list, show}) {
   return (
-    <div className={show? "gameField" : "hideField"}>
+    <div className={show? "inventoryField" : "hideField"}>
         {list.map((game, index) => <InventoryGameBox key={game.appid} game={game} index={index} />)}       
     </div>
   )

@@ -26,6 +26,10 @@ const userReducer = (state = initialState, action) => {
                     wallet: state.user.wallet + (action.payload * state.difficulty.level)
                 }
             }
+        case 'ENDGAME' :
+            return {
+                initialState
+            }
         case 'DECREMENT':
             return {
                 ...state,
