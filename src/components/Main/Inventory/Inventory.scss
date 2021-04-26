@@ -3,6 +3,18 @@
 }
 
 
+.Inventorybox{
+  display: flex;
+}
+
+.gameInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .gameField{
   width: 80vw;
   height: 90vh;
@@ -31,9 +43,7 @@
       height: 300px;
       transition: transform 1s;
 
-      &:hover{
-        transform: scale(1.1);
-      }
+      
     }
 
     &:hover{
@@ -55,4 +65,3 @@
     }
   }
 }
-
