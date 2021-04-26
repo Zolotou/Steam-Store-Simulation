@@ -5,8 +5,12 @@ import QuizApi from '../QuizApi/QuizApi'
 import { connect } from "react-redux"
 import { userActions } from '../../../redux/actions'
 import ReactTooltip from "react-tooltip";
+import audioFileRight from "../../../assets/accept.mp3"
+import audioFileWrong from "../../../assets/disable.mp3"
 
 function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
+  const [audio] = useState(new Audio(audioFileRight));  
+  const [audioWrong] = useState(new Audio(audioFileWrong));
   const [show, setShow] = useState(false);
   const [leftImage, setLeftImage] = useState(1);
   const [rightImage, setRightImage] = useState(1);
@@ -58,8 +62,10 @@ function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
   const answerActivePlayers = (imageAnswer, otherAnswer) => {
     if (imageAnswer <= otherAnswer) {
       incrementActions(20);
+      audio.play()
     } else {
       decrementActions(20)
+      audioWrong.play()
     }
     setShow(false)
   }
@@ -68,8 +74,10 @@ function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
   const answerPublisher = (imageAnswer, otherAnswer, answer) => {
     if (imageAnswer == answer) {
       incrementActions(20);
+      audio.play()
     } else {
       decrementActions(15)
+      audioWrong.play()
     }
     setShow(false)
   }
@@ -77,9 +85,10 @@ function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
   const answerName = (imageAnswer, otherAnswer, answer) => {
     if (imageAnswer == answer) {
       incrementActions(20);
-
+      audio.play()
     } else {
       decrementActions(30)
+      audioWrong.play()
     }
     setShow(false)
   }
