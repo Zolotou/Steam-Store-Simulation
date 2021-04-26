@@ -7,7 +7,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.header__body}>
-                    <NavLink exact to="/"><img src={logo} alt="logo" /></NavLink>
+                    <div className={styles.logo_text}><NavLink exact to="/"><img src={logo} alt="logo" /></NavLink>Steam Store Simulator</div>
                     <NavLink activeClassName={styles.active} exact to="/">Main</NavLink>
                     <NavLink activeClassName={styles.active} to="/score" >Score</NavLink>
                     <NavLink activeClassName={styles.active} to="/about">About</NavLink>

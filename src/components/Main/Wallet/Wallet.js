@@ -6,7 +6,6 @@ import ReactTooltip from "react-tooltip";
 
 const Wallet = ({ cash, onMoney }) => {
     const [audio] = useState(new Audio(audioFile));
-    const [money, setMoney] = useState(0);
 
     const addCash = () => {
         audio.volume = 0.5;

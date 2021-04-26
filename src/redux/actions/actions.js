@@ -11,12 +11,12 @@ export const decrement = (payload) => ({
 export const getGame = () => {
   return async (dispatch) => {
     try {
-      
+
       const res = await fetch('http://steamspy.com/api.php?request=top100in2weeks');
       const data = await res.json();
       const array = Object.entries(data).map((item) => ({ ...item[1] })).sort((first, second) => second.ccu - first.ccu)
       if (res) {
-        dispatch({type: 'GET/GAMES', payload: array});
+        dispatch({ type: 'GET/GAMES', payload: array });
         return true
       } else {
         return false;
@@ -30,6 +30,11 @@ export const getGame = () => {
 
 
 export const buyGame = (payload) => ({
-   payload,
-   type: 'BUYGAME'
+  payload,
+  type: 'BUYGAME'
+})
+
+export const changeDifficulty = (payload) => ({
+  payload,
+  type: 'CHANGE_DIFFICULTY'
 })

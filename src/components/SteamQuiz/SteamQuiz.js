@@ -4,6 +4,7 @@ import quizIcon from "../../assets/Quiz1.svg";
 import styles from "./SteamQuiz.module.scss";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions"
+import ReactTooltip from "react-tooltip";
 
 const questions = [
     {
@@ -98,15 +99,26 @@ const SteamQuiz = ({ incrementActions }) => {
                                 answers={questions[num].answers}
                                 correctAnswer={questions[num].correctAnswer}
                                 clickHandler={clickHandler}
-                            /> </div>
+                            />
+                                <button className={styles.success__closer} onClick={() => setIsQuiz(!isQuiz)} aria-label="Close"></button>
+                            </div>
                             : <div className={styles.quiz}>
                                 <div><h1>No more questions!</h1>
                                     <button className={styles.close} onClick={() => setIsQuiz(!isQuiz)}>Close</button>
+                                    <button className={styles.success__closer} onClick={() => setIsQuiz(!isQuiz)} aria-label="Close"></button>
                                 </div>
                             </div>
                         }</div>
                 </div>
-                : <img className={styles.icon} src={quizIcon} alt="quiz_icon" onClick={() => setIsQuiz(!isQuiz)} />
+                : <div>
+                    <img data-tip data-for="steam_quiz" className={styles.icon} src={quizIcon} alt="quiz_icon" onClick={() => setIsQuiz(!isQuiz)} />
+                    <ReactTooltip id="steam_quiz" place="top" type="dark" effect="float">
+                        <h4>Quiz game</h4>
+                        <p>10 questions about Steam</p>
+                        <p>Each correct answer - 20$</p>
+                    </ReactTooltip>
+                </div>
+
             }
         </div>
     )

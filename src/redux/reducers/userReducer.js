@@ -3,8 +3,13 @@ const initialState = {
     user: {
         gameList: [],
         wallet: 0
+    },
+    difficulty: {
+        level: 1,
+        showInterface: false
     }
 }
+
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -18,7 +23,7 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    wallet: state.user.wallet + action.payload
+                    wallet: state.user.wallet + (action.payload * state.difficulty.level)
                 }
             }
         case 'DECREMENT':
@@ -37,6 +42,11 @@ const userReducer = (state = initialState, action) => {
                     wallet: state.user.wallet - action.payload[1],
                     gameList: [...state.user.gameList, state.gameList[action.payload[0]]]
                 }
+            }
+        case 'CHANGE_DIFFICULTY':
+            return {
+                ...state,
+                difficulty: action.payload
             }
         default:
             return state

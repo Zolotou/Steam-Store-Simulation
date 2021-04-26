@@ -6,14 +6,21 @@
 
 
 .leftSide{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  .gameActions {
+  display: flex;    
+  .interface {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    .gameActions {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
+  .levels {
+    display: flex;
+    align-items: center;
+  }
+  
 }
 

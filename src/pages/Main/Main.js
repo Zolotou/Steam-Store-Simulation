@@ -27,15 +27,17 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
   return (
     <main className="main">
       <section className="leftSide">
-        <Levels />
-        <Stats cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
-        <div className="gameActions">
-          <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
-          <Quiz cash={userReducer.user.wallet} />
-          <SteamQuiz />
-        </div>
-        
-        <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
+        {userReducer.difficulty.showInterface
+          ? <div className="interface">
+            <Stats cash={userReducer.user.wallet} boughtGames={userReducer.user.gameList.length} />
+            <div className="gameActions">
+              <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
+              <Quiz cash={userReducer.user.wallet} />
+              <SteamQuiz />
+            </div>
+            <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
+          </div>
+          : <div className="levels"><Levels /></div>}
       </section>
       <GameField list={userReducer.gameList} />
     </main>
