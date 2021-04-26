@@ -1,5 +1,5 @@
 .icon {
-    width: 100px;
+    width: 100px;        
     &:hover {
         transform: scale(1.2);
         cursor: pointer;
@@ -38,8 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70vw;
-    height: 50vh;
+    width: 70%;
+    height: 50%;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
     color: #000;
@@ -47,3 +47,48 @@
      z-index: 10;
     border-radius: 10px;    
 }
+
+.success__closer {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 24px;
+    z-index: 3;
+    background-color: transparent;
+    overflow: visible;
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    transition: .9s;
+  }
+  
+  .success__closer::after,
+  .success__closer::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 3px;
+    width: 24px;
+    height: 2px;
+    background-color: #14084d;
+  }
+  
+  .success__closer::before {
+    transform: rotate(45deg);
+  }
+  
+  .success__closer::after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .success__closer:focus, 
+  .success__closer:hover {
+    outline: 0;
+    box-shadow: 0 0 10px 3px #282c34;
+  }

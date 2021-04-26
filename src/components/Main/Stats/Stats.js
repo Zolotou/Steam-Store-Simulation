@@ -1,11 +1,11 @@
-import React from 'react'
+import styles from "./Stats.module.scss";
 
-function Stats({cash, buyedGames}) {
+function Stats({ cash, boughtGames }) {
   return (
-    <div>
-      <p>Wallet: {cash} $</p>
-      <p>Games in inventory: {buyedGames}</p>
-      <button onClick={()=> <p>Hey</p>}>Show inventory</button>
+    <div className={styles.stats}>
+      <h2>Wallet: {cash} $</h2>
+      <h3>Games purchased: {boughtGames}</h3>
+      <button onClick={() => <p>Hey</p>}>Show inventory</button>
     </div>
   )
 }
