@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react'
 import {connect} from "react-redux"
 import {userActions} from '../../../redux/actions'
 import ReactTooltip from "react-tooltip";
+import audioFile from "../../../assets/classic.mp3"
 
 function Gamebox({game, userReducer, index, buyGameAction}) {
-  
+  const [audio] = useState(new Audio(audioFile));  
   const [state,setState] = useState(true)
   const [price, setPrice] = useState(0)
+
   
   useEffect(() => {
     const floor = Math.floor((index +1) / 10);
@@ -15,6 +17,9 @@ function Gamebox({game, userReducer, index, buyGameAction}) {
 
   const buyGame = () => {
     if(userReducer.user.wallet >= price){
+      audio.currentTime = 0
+      audio.volume = 0.3
+      audio.play();
       buyGameAction([index, price])
       setState(false)
     }

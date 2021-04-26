@@ -4,6 +4,7 @@ import Helper from "../../components/Main/Helper/Helper"
 import Stats from "../../components/Main/Stats/Stats"
 import Quiz from "../../components/Main/Quiz/Quiz"
 import Inventory from "../../components/Main/Inventory/Inventory"
+import EndGame from "../../components/EndGame/EndGame"
 import { connect } from "react-redux"
 import { userActions } from '../../redux/actions'
 import { useEffect, useState } from 'react';
@@ -14,6 +15,7 @@ import SteamQuiz from "../../components/SteamQuiz/SteamQuiz";
 
 const Main = ({ incrementActions, getGameAction, userReducer }) => {
   const [list, setList] = useState(false)
+  const [endGame, SetEndGame] = useState(false)
 
   const inventoryHandle = () => {
     setList(!list);
@@ -26,6 +28,12 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
   useEffect(() => {
     fetchUserData()
   }, [])
+
+  useEffect(() => {
+    if(userReducer.user.gameList >= 100){
+      SetEndGame(true);
+    }
+  }, [userReducer.user.gameList])
 
 
 
@@ -46,7 +54,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
       </section>
       <Inventory show={list} list={userReducer.user.gameList} />  
       <GameField show={list} list={userReducer.gameList} />
-      
+      {endGame ? <EndGame /> : null}
     </main>
   )
 }

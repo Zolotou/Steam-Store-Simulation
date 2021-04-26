@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/Steam_icon_logo.svg";
+import logo from "../../assets/icons8-steam.svg";
 import styles from "./Header.module.scss";
 
 const Header = () => {
