@@ -1,5 +1,5 @@
 import './App.scss';
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import { Provider } from 'react-redux';
@@ -35,13 +35,13 @@ function App() {
           <main className="main">
             <div className="container">
               <Switch>
-                <Route exact path="/" c render={() => <Main name={'asdfsdf'} />}></Route>
+                <Route exact path="/" c render={() => <Main />}></Route>
                 <Route path="/score" render={() => <Score />}></Route>
                 <Route path="/about" render={() => <About />}></Route>
               </Switch>
             </div>
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </Provider>

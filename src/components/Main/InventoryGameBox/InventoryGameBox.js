@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { changeDifficulty } from '../../../redux/actions/actions';
+import Loader from '../../Loader/Loader';
+import styles from "./InventoryGameBox.module.scss"
 
 
 function InventoryGameBox({ game, index }) {
@@ -17,18 +18,18 @@ function InventoryGameBox({ game, index }) {
 
 
   return (
-    <div className="Inventorybox">
-      <div className="gamebox">
-        <img data-tip data-for={game.name}  src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} onError={e => e.currentTarget.src = "https://moofemp.com/image/grid-designs/pre-greenlight.png"} alt="picture" />
+    <div className={styles.inventoryBox}>
+      <div className={styles.gameBox}>
+        <img data-tip data-for={game.name} src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} onError={e => e.currentTarget.src = "https://moofemp.com/image/grid-designs/pre-greenlight.png"} alt="game_icon" />
       </div>
       {gameInfo ?
-        <div className="gameInfo">
+        <div className={styles.gameInfo}>
           <h2>Name: {game.name}</h2>
           <h4>Developer: {gameInfo.developer}</h4>
           <p>Active current players: {gameInfo.ccu}</p>
           <p>Genre: {gameInfo.genre}</p>
         </div>
-        : "Loading"
+        : <div className={styles.loader}><Loader /></div>
       }
     </div>
 

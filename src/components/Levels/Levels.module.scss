@@ -1,4 +1,7 @@
 .levels{
+    h2{
+        padding-bottom: 20px;
+    }
     .btn {    
         padding: 1em 2em;
         background-color: white;
@@ -11,7 +14,7 @@
         margin: 10px;
         &:hover {            
             transform: scale(1.1);
-            cursor: pointer;
+            cursor: pointer;            
         }
     }
 }

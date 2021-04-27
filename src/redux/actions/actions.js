@@ -43,3 +43,8 @@ export const changeDifficulty = (payload) => ({
   payload,
   type: 'CHANGE_DIFFICULTY'
 })
+
+export const timePassed = (payload) => ({
+  payload,
+  type: 'TIME_PASSED'
+})

@@ -11,7 +11,7 @@ const Header = () => {
                     <NavLink activeClassName={styles.active} exact to="/">Main</NavLink>
                     <NavLink activeClassName={styles.active} to="/score" >Score</NavLink>
                     <NavLink activeClassName={styles.active} to="/about">About</NavLink>
-                    <div>Login</div>
+                    <div></div>
                 </div>
             </div>
         </header>

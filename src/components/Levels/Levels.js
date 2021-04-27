@@ -4,14 +4,7 @@ import { connect } from "react-redux";
 import ReactTooltip from "react-tooltip";
 
 const Levels = ({ changeDifficulty }) => {
-    // const [time, setTime] = useState(0);
-    // useEffect(() => {
-    //     if (time > 0) {
-    //         setTimeout(() => setTime(time - 1), 1000);
-    //     } else {
-    //         setTime(0);
-    //     }
-    // }, [time]);
+
     return (
         <div className={styles.levels}>
             <h2>Select the difficulty level:</h2>
@@ -29,8 +22,6 @@ const Levels = ({ changeDifficulty }) => {
                     <h4>You will receive x0.5 from the money earned</h4>
                 </ReactTooltip>
             </div>
-            {/* <button className={styles.btn} disabled={time > 0} onClick={() => setTime(30)}>Hard</button> */}
-            {/* <div>Time left: {time} seconds</div> */}
         </div>
     )
 }

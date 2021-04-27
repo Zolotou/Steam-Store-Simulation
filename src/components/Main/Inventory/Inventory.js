@@ -1,12 +1,11 @@
 import React from 'react'
 import './Inventory.scss'
-import Gamebox from '../Gamebox/Gamebox'
 import InventoryGameBox from '../InventoryGameBox/InventoryGameBox'
 
-function Inventory({list, show}) {
+function Inventory({ list, show }) {
   return (
-    <div className={show? "inventoryField" : "hideField"}>
-        {list.map((game, index) => <InventoryGameBox key={game.appid} game={game} index={index} />)}       
+    <div className={show ? "inventoryField" : "hideField"}>
+      {list.map((game, index) => <InventoryGameBox key={game.appid} game={game} index={index} />)}
     </div>
   )
 }
