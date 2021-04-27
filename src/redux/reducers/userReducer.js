@@ -8,7 +8,7 @@ const initialState = {
     difficulty: {
         level: 1,
         showInterface: false,
-        timePassed: new Date(0)
+        timePassed: new Date()
     }
 }
 
@@ -61,14 +61,15 @@ const userReducer = (state = initialState, action) => {
         case 'CHANGE_DIFFICULTY':
             return {
                 ...state,
-                difficulty: action.payload
+                difficulty: action.payload,
+                timePassed: new Date().getTime()
             }
         case 'TIME_PASSED':
             return {
                 ...state,
                 difficulty: {
                     ...state.difficulty,
-                    timePassed: action.payload
+                    timePassed: new Date()
                 }
             }
         default:

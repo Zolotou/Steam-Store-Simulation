@@ -6,11 +6,12 @@ import audioFile from "../../../assets/classic.mp3"
 
 function Gamebox({game, userReducer, index, buyGameAction}) {
   const [audio] = useState(new Audio(audioFile));  
-  const [state,setState] = useState(true)
-  const [price, setPrice] = useState(0)
+  const [state,setState] = useState(true);
+  const [price, setPrice] = useState(0);
 
   
   useEffect(() => {
+    audio.volume = 0.3
     const floor = Math.floor((index +1) / 10);
     setPrice(floor ? (floor*5)+5 : 5)
   }, [])
@@ -18,7 +19,6 @@ function Gamebox({game, userReducer, index, buyGameAction}) {
   const buyGame = () => {
     if(userReducer.user.wallet >= price){
       audio.currentTime = 0
-      audio.volume = 0.3
       audio.play();
       buyGameAction([index, price])
       setState(false)

@@ -1,3 +1,7 @@
+.dollar{
+  transition: transform 0.5s;
+}
+
 .dollar:hover{
   cursor: pointer;
   transform: scale(1.2);

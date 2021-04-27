@@ -11,3 +11,12 @@
   align-items: center;
   margin-top: 15px;   
 }
+
+.inventoryField::-webkit-scrollbar{
+  width: 5px;
+  background-color: #1b2838;
+}
+
+.inventoryField::-webkit-scrollbar-thumb{
+  background-color: #FFFFFF;
+}

@@ -44,7 +44,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
         {userReducer.difficulty.showInterface
           ? <div className="interface">
             <Stats inventoryHandle={inventoryHandle} cash={userReducer.user.wallet}
-              boughtGames={userReducer.user.gameList.length} timer={userReducer.difficulty.timePassed} />
+              boughtGames={userReducer.user.gameList.length} timer={userReducer?.timePassed} />
             <div className="gameActions">
               <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
               <Quiz cash={userReducer.user.wallet} />
@@ -54,8 +54,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
           </div>
           : <div className="levels"><Levels /></div>}
       </section>
-      <Inventory show={list} list={userReducer.user.gameList} />
-      <GameField show={list} list={userReducer.gameList} />
+      {list ? <Inventory list={userReducer.user.gameList} /> : <GameField  list={userReducer.gameList} purchaseList={userReducer.user.gameList} />}
       {endGame ? <EndGame /> : null}
     </main>
   )
