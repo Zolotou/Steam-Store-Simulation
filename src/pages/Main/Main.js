@@ -5,6 +5,7 @@ import Stats from "../../components/Main/Stats/Stats"
 import Quiz from "../../components/Main/Quiz/Quiz"
 import Inventory from "../../components/Main/Inventory/Inventory"
 import EndGame from "../../components/EndGame/EndGame"
+
 import { connect } from "react-redux"
 import { userActions } from '../../redux/actions'
 import { useEffect, useState } from 'react';
@@ -33,7 +34,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
     if (userReducer.user.gameList >= 100) {
       SetEndGame(true);
     }
-  }, [userReducer.user.gameList])
+  }, [userReducer.user?.gameList])
 
 
 
