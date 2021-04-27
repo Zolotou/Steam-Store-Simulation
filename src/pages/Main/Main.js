@@ -30,7 +30,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
   }, [])
 
   useEffect(() => {
-    if(userReducer.user.gameList >= 100){
+    if (userReducer.user.gameList >= 100) {
       SetEndGame(true);
     }
   }, [userReducer.user.gameList])
@@ -42,17 +42,18 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
       <section className="leftSide">
         {userReducer.difficulty.showInterface
           ? <div className="interface">
-            <Stats inventoryHandle={inventoryHandle} cash={userReducer.user.wallet} boughtGames={userReducer.user.gameList.length} />
+            <Stats inventoryHandle={inventoryHandle} cash={userReducer.user.wallet}
+              boughtGames={userReducer.user.gameList.length} timer={userReducer.difficulty.timePassed} />
             <div className="gameActions">
               <Wallet onMoney={incrementActions} cash={userReducer.user.wallet} />
               <Quiz cash={userReducer.user.wallet} />
               <SteamQuiz />
             </div>
-            <Helper cash={userReducer.user.wallet} buyedGames={userReducer.user.gameList.length} />
+            <Helper cash={userReducer.user.wallet} boughtGames={userReducer.user.gameList.length} />
           </div>
           : <div className="levels"><Levels /></div>}
       </section>
-      <Inventory show={list} list={userReducer.user.gameList} />  
+      <Inventory show={list} list={userReducer.user.gameList} />
       <GameField show={list} list={userReducer.gameList} />
       {endGame ? <EndGame /> : null}
     </main>

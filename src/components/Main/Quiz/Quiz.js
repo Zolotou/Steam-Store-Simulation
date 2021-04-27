@@ -9,7 +9,7 @@ import audioFileRight from "../../../assets/accept.mp3"
 import audioFileWrong from "../../../assets/disable.mp3"
 
 function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
-  const [audio] = useState(new Audio(audioFileRight));  
+  const [audio] = useState(new Audio(audioFileRight));
   const [audioWrong] = useState(new Audio(audioFileWrong));
   const [show, setShow] = useState(false);
   const [leftImage, setLeftImage] = useState(1);
@@ -103,7 +103,7 @@ function Quiz({ cash, userReducer, incrementActions, decrementActions }) {
         <h4>Quiz game</h4>
         <p>It has tree types of questions</p>
         <p>If you answer correctly you receive cash  - 20$</p>
-        <p>Wrong - from 15 to 30$</p>
+        <p>Wrong - you lost from 15 to 30$</p>
         <p>Price to play: 15$</p>
       </ReactTooltip>
       {show ? <QuizApi left={leftImage} right={rightImage} answer={quizType.answerRight} leftImage={userReducer.gameList[leftImage]?.appid} rightImage={userReducer.gameList[rightImage]?.appid} answerFunction={quizType.answerFunction} question={quizType.question} /> : null}

@@ -6,7 +6,8 @@ const initialState = {
     },
     difficulty: {
         level: 1,
-        showInterface: false
+        showInterface: false,
+        timePassed: 0
     }
 }
 
@@ -26,7 +27,7 @@ const userReducer = (state = initialState, action) => {
                     wallet: state.user.wallet + (action.payload * state.difficulty.level)
                 }
             }
-        case 'ENDGAME' :
+        case 'ENDGAME':
             return {
                 initialState
             }
@@ -51,6 +52,14 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 difficulty: action.payload
+            }
+        case 'TIME_PASSED':
+            return {
+                ...state,
+                difficulty: {
+                    ...state.difficulty,
+                    timePassed: action.payload
+                }
             }
         default:
             return state

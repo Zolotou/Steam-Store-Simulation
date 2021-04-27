@@ -1,11 +1,11 @@
-import React from 'react'
+import styles from "./Helpers.module.scss"
 
-function Helper({cash, buyedGames}) {
+function Helper({ cash, boughtGames }) {
   return (
-    <div>
-      <h2>Your goal: buy all the games</h2>
-      {buyedGames > 0 ? `great: left to buy games: ${100 - buyedGames}`: null}
-      <h3>{cash > 0 ? "great job keep doing it" : "Hint: click on $ icon"}</h3>
+    <div className={styles.helpers}>
+      <h2>Your goal: buy all the games!</h2>
+      {boughtGames > 0 ? <h3>{`great: left to buy games: ${100 - boughtGames}`}</h3> : null}
+      <div className={styles.hint}>{cash > 0 ? "Great job keep doing it" : "Hint: click on $ or quiz icon"}</div>
     </div>
   )
 }
