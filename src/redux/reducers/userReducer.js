@@ -8,7 +8,7 @@ const initialState = {
     difficulty: {
         level: 1,
         showInterface: false,
-        timePassed: 0
+        timePassed: new Date(0)
     }
 }
 

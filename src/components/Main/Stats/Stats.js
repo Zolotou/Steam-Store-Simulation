@@ -27,7 +27,7 @@ function Stats({ cash, boughtGames, inventoryHandle, timePassed, timer }) {
   return (
     <div className={styles.stats}>
       <h2>Wallet: {cash} $</h2>
-      <h3>Timer: {timer} seconds  </h3>
+      <h3>Timer: {timer} seconds passed</h3>
       <h3>Games purchased: {boughtGames}</h3>
       <div onClick={() => handleClick()}>{state ?
         <div className={styles.icon}>
