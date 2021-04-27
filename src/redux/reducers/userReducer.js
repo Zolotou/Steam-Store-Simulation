@@ -2,7 +2,8 @@ const initialState = {
     gameList: [],
     user: {
         gameList: [],
-        wallet: 0
+        wallet: 0,
+        score: 0,
     },
     difficulty: {
         level: 1,
@@ -28,7 +29,16 @@ const userReducer = (state = initialState, action) => {
             }
         case 'ENDGAME' :
             return {
-                initialState
+                ...state,
+                user: {
+                    gameList: [],
+                    wallet: 0,
+                    score: 0,
+                },
+                difficulty: {
+                    level: 1,
+                    showInterface: false
+                }
             }
         case 'DECREMENT':
             return {
