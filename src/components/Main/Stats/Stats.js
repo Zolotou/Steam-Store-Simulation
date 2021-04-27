@@ -4,6 +4,7 @@ import showInventory from "../../../assets/icons8-show-property.svg";
 import hideInventory from "../../../assets/icons8-hide.svg"
 import { connect } from "react-redux";
 import { userActions } from "../../../redux/actions";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
 
 function Stats({ cash, boughtGames, inventoryHandle, timer }) {
 
@@ -24,11 +25,6 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
       let timeDiffrence = ((currentTime.getTime() - timer)/1000).toFixed(0); 
       setTime(timeDiffrence)
     }, 1000)
-    // const timerCounter =
-    //   setInterval(() => setTime(time + 1), 1000);
-    // timePassedAction(time)
-
-    // return () => clearInterval(timerCounter);
 
   }, []);
 
@@ -38,7 +34,8 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
       <h2>Wallet: {cash} $</h2>
       <h3>Timer: {time} seconds passed</h3>
       <h3>Games purchased: {boughtGames}</h3>
-      <div onClick={() => handleClick()}>{state ?
+      <div onClick={() => handleClick()}>
+        {state ?
         <div className={styles.icon}>
           <img src={showInventory} alt="ShowInventory" />
           <p>show inventory</p>
