@@ -1,6 +1,10 @@
 .card {
+    
     h1 {
         margin: 20px;
+        @media (max-width: 600px)  {            
+            font-size: 1em;             
+        }
     }
 }
 
@@ -13,6 +17,9 @@
     transition: 0.2s;    
     outline: none;
     margin: 10px;
+    @media (max-width: 600px)  {            
+        padding: 0.5em 1em;            
+    }
     &:hover {
         background-color: #606570;
         transform: scale(1.1);
