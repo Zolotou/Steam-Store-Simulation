@@ -27,7 +27,6 @@ function Gamebox({ game, userReducer, index, buyGameAction }) {
       audio.play();
       buyGameAction([index, price])
       setState(false)
-      setIsPurchasing(false)
     }
     else console.log("not enough money")
   }
@@ -48,8 +47,12 @@ function Gamebox({ game, userReducer, index, buyGameAction }) {
               setIsPurchasing(true);
             }
             setTimeout(() => {
-              buyGame();
-            }, 250)
+              if(userReducer.user.wallet >= price){
+                setIsPurchasing(false)
+                buyGame();
+              }
+              
+            }, 200)
           }} src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} onError={e => e.currentTarget.src = "https://moofemp.com/image/grid-designs/pre-greenlight.png"} alt="picture" />
           <ReactTooltip id={game.name} place="top" type="dark" effect="float" >
             <h2>Name: {game.name}</h2>

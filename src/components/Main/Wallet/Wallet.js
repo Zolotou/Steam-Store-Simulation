@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef} from "react";
 import "./Wallet.scss";
 import audioFile from "../../../assets/pence.mp3"
 import gif from '../../../assets/icons8-us-dollar.svg'
@@ -6,6 +6,8 @@ import ReactTooltip from "react-tooltip";
 
 const Wallet = ({ cash, onMoney }) => {
     const [audio] = useState(new Audio(audioFile));
+
+    
 
     const addCash = () => {
         audio.volume = 0.5;
