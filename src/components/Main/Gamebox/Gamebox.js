@@ -9,6 +9,10 @@ function Gamebox({ game, userReducer, index, buyGameAction }) {
   const [audio] = useState(new Audio(audioFile));
   const [state, setState] = useState(true);
   const [price, setPrice] = useState(0);
+  const [isPurchasing, setIsPurchasing] = useState(false)
+
+
+
 
 
   useEffect(() => {
@@ -23,11 +27,13 @@ function Gamebox({ game, userReducer, index, buyGameAction }) {
       audio.play();
       buyGameAction([index, price])
       setState(false)
+      setIsPurchasing(false)
     }
     else console.log("not enough money")
   }
 
-  if (!state) return null
+
+  if (!state) return null;
 
   return (
     <>
@@ -36,8 +42,15 @@ function Gamebox({ game, userReducer, index, buyGameAction }) {
         timeout={300}
         classNames="fade"
       >
-        <div className={userReducer.user.wallet >= price ? "gamebox" : "gamebox-disable"} >
-          <img data-tip data-for={game.name} onClick={() => buyGame()} src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} onError={e => e.currentTarget.src = "https://moofemp.com/image/grid-designs/pre-greenlight.png"} alt="picture" />
+        <div className={isPurchasing ? "small" : `${userReducer.user.wallet >= price ? "gamebox" : "gamebox-disable"}`} >
+          <img data-tip data-for={game.name} onClick={() => {
+            if (userReducer.user.wallet >= price) {
+              setIsPurchasing(true);
+            }
+            setTimeout(() => {
+              buyGame();
+            }, 250)
+          }} src={`https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900.jpg`} onError={e => e.currentTarget.src = "https://moofemp.com/image/grid-designs/pre-greenlight.png"} alt="picture" />
           <ReactTooltip id={game.name} place="top" type="dark" effect="float" >
             <h2>Name: {game.name}</h2>
             <h3>Price: ${price}</h3>
