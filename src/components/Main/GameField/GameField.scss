@@ -83,11 +83,16 @@
     }
   }
 
-  .small {        
-    transition: opacity 200ms linear, background-color 0.5s, transform 200ms linear;
-    opacity: 0.2;
-    background-color: green;
-    transform: scale(0.1);
+  .small {   
+    width: 250px;
+    height: 350px;
+    img {
+      transition: opacity 200ms linear, background-color 0.5s, transform 200ms linear;
+      opacity: 0.2;
+      background-color: green;
+      transform: scale(0.1);
+    }     
+    
   }
 }
 

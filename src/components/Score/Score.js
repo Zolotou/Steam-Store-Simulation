@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllPosts } from '../../firebase'
+import Loader from '../Loader/Loader'
 import styles from "./Score.module.scss"
 
 function Score() {
@@ -31,7 +32,7 @@ function Score() {
       setAllPosts(res)
     }
   }
-  console.log(allPosts)
+
   return (
     <div className={styles.scoreBoard}>
       <h1>ScoreBoard</h1>
@@ -42,8 +43,8 @@ function Score() {
       </div>
       <h2>Difficulty level: {diff}</h2>
       <div className={styles.playersList}>
-        {
-          allPosts?.sort(function (a, b) {
+        {allPosts
+          ? allPosts.sort(function (a, b) {
             return b.score - a.score
           }).map((post, ind) => {
             return (
@@ -53,6 +54,7 @@ function Score() {
               </div>
             )
           })
+          : <Loader />
         }
       </div>
     </div>
