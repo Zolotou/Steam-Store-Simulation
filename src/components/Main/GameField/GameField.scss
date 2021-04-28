@@ -33,7 +33,7 @@
 
 .gameField{
   width: 80vw;
-  height: 85vh;
+  height: 88vh;
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
@@ -50,7 +50,7 @@
     background-color: none;
     transition: background-color 0.5s;
 
-    img{
+    img {
       width: 200px;
       height: 300px;
       transition: transform 0.5s;
@@ -73,10 +73,14 @@
     height: 350px;
 
     img{
-
       width: 200px;
       height: 300px;
     }
+  }
+
+  .small {        
+    transition: 250ms linear;
+    transform: scale(0.1);
   }
 }
 
