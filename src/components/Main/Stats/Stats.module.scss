@@ -9,14 +9,58 @@
     }
     .icon {
         padding-top: 25px;
+        height: 101px;
         transition: transform 0.5s;
+        animation: notFadingInventory 0.5s ease;
         &:hover{
             cursor: pointer;
             transform: scale(1.2);
           }  
+        &:active{
+            animation: fadingInventory 0.5s ease;
+        }  
     }   p {
         font-size: 1.17em;
         font-weight: bold;
     }
 }
 
+.cash-wallet{
+    animation: colorCash 1s ease;
+}
+
+@keyframes colorCash{
+    0%{
+        color: #FFFFFF;
+    }
+    50%{
+        color: green;
+    }
+    100%{
+        color: #FFFFFF;
+    }
+}
+
+@keyframes fadingInventory{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes  notFadingInventory{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
+}

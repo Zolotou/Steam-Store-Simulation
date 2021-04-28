@@ -49,6 +49,7 @@
     height: 350px;
     background-color: none;
     transition: background-color 0.5s;
+    animation: opacitySlide 1s ease;
 
     img {
       width: 200px;
@@ -63,6 +64,7 @@
     &:hover{
       background-color: aliceblue;
     }
+
   }
 
   .gamebox-disable{
@@ -71,16 +73,40 @@
     opacity: 0.5;
     width: 250px;
     height: 350px;
+    transition: opacity 1s linear;
 
     img{
+      animation: imgScale 0.5s linear;
+      transform: scale(0.9);
       width: 200px;
       height: 300px;
     }
   }
 
   .small {        
-    transition: 250ms linear;
+    transition: opacity 200ms linear, background-color 0.5s, transform 200ms linear;
+    opacity: 0.2;
+    background-color: green;
     transform: scale(0.1);
   }
 }
 
+@keyframes opacitySlide {
+  0% {
+    opacity: 0.5;
+
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes imgScale {
+  0% {
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.9);
+  }
+}
