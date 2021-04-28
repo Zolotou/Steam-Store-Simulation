@@ -16,7 +16,7 @@ import SteamQuiz from "../../components/SteamQuiz/SteamQuiz";
 
 const Main = ({ incrementActions, getGameAction, userReducer }) => {
   const [list, setList] = useState(false)
-  const [endGame, SetEndGame] = useState(true)
+  const [endGame, SetEndGame] = useState(false)
 
   const inventoryHandle = () => {
     setList(!list);
