@@ -12,7 +12,7 @@ export const getGame = () => {
   return async (dispatch) => {
     try {
 
-      const res = await fetch('http://steamspy.com/api.php?request=top100in2weeks');
+      const res = await fetch('https://steamspy.com/api.php?request=top100in2weeks');
       const data = await res.json();
       const array = Object.entries(data).map((item) => ({ ...item[1] })).sort((first, second) => second.ccu - first.ccu)
       if (res) {

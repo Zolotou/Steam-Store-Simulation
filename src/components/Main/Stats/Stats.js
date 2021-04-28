@@ -1,5 +1,5 @@
 import styles from "./Stats.module.scss";
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import showInventory from "../../../assets/icons8-show-property.svg";
 import hideInventory from "../../../assets/icons8-hide.svg"
 import { connect } from "react-redux";
@@ -11,13 +11,17 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
   const [state, setState] = useState(true);
   const [time, setTime] = useState("");
 
+  useEffect(() => {
+    
+  }, [cash])
+
   const handleClick = () => {
     setState(!state)
     inventoryHandle()
   }
+
+  
   useEffect(() => {
-
-
 
     setInterval(() => {
       let currentTime = new Date();
@@ -31,7 +35,7 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
 
   return (
     <div className={styles.stats}>
-      <h2>Wallet: {cash} $</h2>
+      <h2>Wallet: <span className="cash-wallet">{cash}</span> $</h2>
       <h3>Timer: {time} seconds passed</h3>
       <h3>Games purchased: {boughtGames}</h3>
       <div onClick={() => handleClick()}>
@@ -48,6 +52,7 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
     </div>
   )
 }
+
 
 const mapDispatchToProps = {
   timePassedAction: userActions.timePassed
