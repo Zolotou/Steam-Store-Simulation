@@ -54,7 +54,7 @@ const Main = ({ incrementActions, getGameAction, userReducer }) => {
           </div>
           : <div className="levels"><Levels /></div>}
       </section>
-      {list ? <Inventory list={userReducer.user.gameList} /> : <GameField  list={userReducer.gameList} purchaseList={userReducer.user.gameList} />}
+      {list ? <Inventory list={userReducer.user.gameList} /> : <GameField list={userReducer.gameList} purchaseList={userReducer.user.gameList} />}
       {endGame ? <EndGame /> : null}
     </main>
   )

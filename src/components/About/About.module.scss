@@ -1,0 +1,56 @@
+.about {
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;      
+    flex-wrap: wrap;
+    width: 80vw;
+    height: 100%;
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 70%;
+        h2 {
+            padding: 20px;
+        }
+        a {             
+             text-decoration: none;
+             color: #b8b6b4;
+             font-size: 18px;
+             transition: 0.2s;
+             &:hover {
+               color: #fff;
+             }
+             &.active {
+               color: #fff;                  
+             }           
+             .icon {
+                 height: 25px;     
+                 padding: 2px;       
+                 margin: 0 5px;
+                 background:  white;  
+                 border-radius: 50%;
+                 &:hover {
+                     transform: scale(1.2);
+                 }
+             }  
+           } 
+        }
+    .form__container{
+        display: flex;
+        flex-direction: column;      
+        justify-content: center; 
+        h2 {
+            padding: 20px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;     
+                      
+            }
+    }             
+    
+    
+}
+

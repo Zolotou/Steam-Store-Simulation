@@ -32,7 +32,7 @@ function App() {
       <div className="App">
         <div className="wrapper">
           <Header />
-          <main className="main">
+          <main className="main__section">
             <div className="container">
               <Switch>
                 <Route exact path="/" c render={() => <Main />}></Route>
