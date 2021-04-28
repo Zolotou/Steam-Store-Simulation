@@ -10,17 +10,18 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
 
   const [state, setState] = useState(true);
   const [time, setTime] = useState("");
+  const [color, setColor] = useState(false);
 
   useEffect(() => {
-    
+    setColor(!color);
   }, [cash])
 
   const handleClick = () => {
-    setState(!state)
-    inventoryHandle()
+    setState(!state);
+    inventoryHandle();
   }
 
-  
+
   useEffect(() => {
 
     setInterval(() => {
@@ -32,11 +33,16 @@ function Stats({ cash, boughtGames, inventoryHandle, timer }) {
 
   }, []);
 
+  let divisor_for_minutes = time % (60 * 60);
+  let minutes = Math.floor(divisor_for_minutes / 60);
+
+  let divisor_for_seconds = divisor_for_minutes % 60;
+  let seconds = Math.ceil(divisor_for_seconds);
 
   return (
     <div className={styles.stats}>
-      <h2>Wallet: <span className="cash-wallet">{cash}</span> $</h2>
-      <h3>Timer: {time} seconds passed</h3>
+      <h2 className={`${color ? styles.cashWallet : null}`}>Wallet: <span>{cash}</span> $</h2>
+      <h3>Timer: {minutes} mins {seconds} secs passed</h3>
       <h3>Games purchased: {boughtGames}</h3>
       <div onClick={() => handleClick()}>
         {state ?

@@ -37,7 +37,7 @@ function EndGame({ userReducer, endGameActions }) {
       <div className={styles.endGame}>
         <h2>Congratulations, the game was successfully completed!</h2>
         <p>Your score is: {userReducer.user.score} </p>
-        <p>You finish the game in:</p>
+        <p>You finish the game in: {userReducer.difficulty.timePassed} seconds</p>
         <div>
           <label>Enter your nickname:</label>
           <input value={nickname} onChange={(e) => setNickname(e.target.value)} type="text" placeholder="Player" required />
