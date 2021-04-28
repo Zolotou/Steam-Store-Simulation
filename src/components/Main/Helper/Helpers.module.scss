@@ -1,4 +1,7 @@
 .helpers{
+    @media (max-width: 600px)  {          
+        display: none;         
+       }
     h2 {
         padding: 10px 0;
     }

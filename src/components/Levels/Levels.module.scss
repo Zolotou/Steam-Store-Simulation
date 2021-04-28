@@ -16,6 +16,10 @@
             transform: scale(1.1);
             cursor: pointer;            
         }
+        @media (max-width: 600px)  {
+            padding: 0.5em 1em;
+            font-size: 1em;            
+          }
     }
 }
 

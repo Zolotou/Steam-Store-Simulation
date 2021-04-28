@@ -50,12 +50,14 @@ const userReducer = (state = initialState, action) => {
                 }
             }
         case 'BUYGAME':
+            console.log(state.user.score);
             return {
                 ...state,
                 user: {
                     ...state.user,
                     wallet: state.user.wallet - action.payload[1],
-                    gameList: [...state.user.gameList, state.gameList[action.payload[0]]]
+                    gameList: [...state.user.gameList, state.gameList[action.payload[0]]],
+                    score: state.user.score + action.payload[1] * 10
                 }
             }
         case 'CHANGE_DIFFICULTY':

@@ -40,6 +40,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+  @media (max-width: 600px)  {    
+    width: auto;
+  }
 
 
   .gamebox{
@@ -50,11 +53,19 @@
     background-color: none;
     transition: background-color 0.5s;
     animation: opacitySlide 1s ease;
+    @media (max-width: 600px)  {            
+      width: 195px;
+      height: 260px;                
+    }
 
     img {
       width: 200px;
       height: 300px;
       transition: transform 0.5s;
+      @media (max-width: 600px)  {            
+          width: 145px;
+          height: 210px;                
+      }
 
       &:hover{
         transform: scale(1.1);
@@ -64,6 +75,7 @@
     &:hover{
       background-color: aliceblue;
     }
+    
 
   }
 
@@ -73,6 +85,10 @@
     opacity: 0.5;
     width: 250px;
     height: 350px;
+    @media (max-width: 600px)  {            
+      width: 195px;
+      height: 260px;                
+    }
     transition: opacity 1s linear;
 
     img{
@@ -80,12 +96,20 @@
       transform: scale(0.9);
       width: 200px;
       height: 300px;
+      @media (max-width: 600px)  {            
+        width: 145px;
+        height: 210px;                
+    }
     }
   }
 
   .small {   
     width: 250px;
     height: 350px;
+    @media (max-width: 600px)  {            
+      width: 145px;
+      height: 210px;                
+    }
     img {
       transition: opacity 200ms linear, background-color 0.5s, transform 200ms linear;
       opacity: 0.2;
